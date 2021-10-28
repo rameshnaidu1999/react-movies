@@ -6,6 +6,8 @@ import Brightness4Icon from "@mui/icons-material/Brightness4";
 import Brightness7Icon from "@mui/icons-material/Brightness7";
 
 import Header from "./components/Header";
+import { Container, Grid, TextField, CssBaseline, Button } from "@mui/material";
+import CreateTodo from "./components/todo/CreateTodo";
 
 const ColorModeContext = React.createContext({ toggleColorMode: () => {} });
 
@@ -27,6 +29,19 @@ function MyApp() {
         )}
       </IconButton> */}
       <Header colorMode={colorMode} theme={theme} />
+      <CssBaseline />
+      <Container maxWidth="md" sx={{ marginTop: 2 }}>
+        <Grid
+          container
+          direction="row"
+          justifyContent="center"
+          alignItems="center"
+        >
+          <Grid item xs={12} md={6}>
+            <CreateTodo />
+          </Grid>
+        </Grid>
+      </Container>
     </Box>
   );
 }
