@@ -18,7 +18,7 @@ import MoreIcon from "@mui/icons-material/MoreVert";
 import { useTheme, ThemeProvider, createTheme } from "@mui/material/styles";
 import Brightness4Icon from "@mui/icons-material/Brightness4";
 import Brightness7Icon from "@mui/icons-material/Brightness7";
-
+import { Link } from "react-router-dom";
 import Sidebar from "./Sidebar";
 
 const Search = styled("div")(({ theme }) => ({
@@ -176,7 +176,7 @@ export default function PrimarySearchAppBar({
             component="div"
             sx={{ display: { xs: "none", sm: "block" } }}
           >
-            MUI
+            Movies
           </Typography>
           <Search>
             <SearchIconWrapper>
@@ -188,36 +188,51 @@ export default function PrimarySearchAppBar({
             />
           </Search>
           <Box sx={{ flexGrow: 1 }} />
-          <Box sx={{ display: { xs: "none", md: "flex" } }}>
-            <IconButton
-              size="large"
-              aria-label="show 4 new mails"
-              color="inherit"
-            >
-              <Badge badgeContent={4} color="error">
-                <MailIcon />
-              </Badge>
-            </IconButton>
-            <IconButton
-              size="large"
-              aria-label="show 17 new notifications"
-              color="inherit"
-            >
-              <Badge badgeContent={17} color="error">
-                <NotificationsIcon />
-              </Badge>
-            </IconButton>
-            <IconButton
-              size="large"
-              edge="end"
-              aria-label="account of current user"
-              aria-controls={menuId}
-              aria-haspopup="true"
-              onClick={handleProfileMenuOpen}
-              color="inherit"
-            >
-              <AccountCircle />
-            </IconButton>
+          <Box
+            sx={{
+              display: { xs: "none", md: "flex" },
+              alignItems: "center",
+            }}
+          >
+            <Link to="/watched">
+              <Typography
+                sx={{
+                  textDecorationLine: "none",
+                  textDecorationColor: "white",
+                  color: "white",
+                  textDecorationSkip: "none",
+                  marginX: 3,
+                }}
+              >
+                Watched
+              </Typography>
+            </Link>
+
+            <Link to="/watchlist">
+              <Typography
+                sx={{
+                  textDecorationLine: "none",
+                  textDecorationColor: "white",
+                  color: "white",
+                  textDecorationSkip: "none",
+                }}
+              >
+                Watclist
+              </Typography>
+            </Link>
+            <Link to="/add">
+              <Typography
+                sx={{
+                  textDecorationLine: "none",
+                  textDecorationColor: "white",
+                  color: "white",
+                  textDecorationSkip: "none",
+                  marginX: 2,
+                }}
+              >
+                Add
+              </Typography>
+            </Link>
             <IconButton
               sx={{ ml: 1 }}
               onClick={colorMode.toggleColorMode}

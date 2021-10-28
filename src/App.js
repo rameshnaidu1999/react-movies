@@ -4,10 +4,11 @@ import Box from "@mui/material/Box";
 import { useTheme, ThemeProvider, createTheme } from "@mui/material/styles";
 import Brightness4Icon from "@mui/icons-material/Brightness4";
 import Brightness7Icon from "@mui/icons-material/Brightness7";
-
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Header from "./components/Header";
 import { Container, Grid, TextField, CssBaseline, Button } from "@mui/material";
 import CreateTodo from "./components/todo/CreateTodo";
+import Routes from "./Routes";
 
 const ColorModeContext = React.createContext({ toggleColorMode: () => {} });
 
@@ -15,34 +16,15 @@ function MyApp() {
   const theme = useTheme();
   const colorMode = React.useContext(ColorModeContext);
   return (
-    <Box>
-      {/* {theme.palette.mode} mode
-      <IconButton
-        sx={{ ml: 1 }}
-        onClick={colorMode.toggleColorMode}
-        color="inherit"
-      >
-        {theme.palette.mode === "dark" ? (
-          <Brightness7Icon />
-        ) : (
-          <Brightness4Icon />
-        )}
-      </IconButton> */}
-      <Header colorMode={colorMode} theme={theme} />
-      <CssBaseline />
-      <Container maxWidth="md" sx={{ marginTop: 2 }}>
-        <Grid
-          container
-          direction="row"
-          justifyContent="center"
-          alignItems="center"
-        >
-          <Grid item xs={12} md={6}>
-            <CreateTodo />
-          </Grid>
-        </Grid>
-      </Container>
-    </Box>
+    <Router>
+      <Box>
+        <Header colorMode={colorMode} theme={theme} />
+        <CssBaseline />
+        <Container maxWidth="md" sx={{ marginTop: 2 }}>
+          <Routes />
+        </Container>
+      </Box>
+    </Router>
   );
 }
 
